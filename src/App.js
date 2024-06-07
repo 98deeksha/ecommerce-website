@@ -7,6 +7,7 @@ import Main from './components/Main';
 import Signin from './components/Signin';
 import Navbar from './components/Navbar';
 import ProductDetails from './components/ProductDetails';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Main />} exact={true} />
         <Route path="/signin" element={<Signin />} exact={true} />
         <Route path="/details" element={<ProductDetails />} exact={true} />
+        <Route path='/register' element={<Register />} />
       </Routes>
     </div>
   );

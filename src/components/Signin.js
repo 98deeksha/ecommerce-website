@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import home from '../assets/login.png'
 import { useState } from 'react';
 
@@ -19,19 +20,14 @@ const Signin = () => {
         <img src={home} alt="hero" className="mt-44 w-80" />
       </div>
       <div className="pt-12">
-        <input type="text"
-          placeholder="Enter Email/Mobile number"
-        />
+        <input type="text" placeholder="Enter Email/Mobile number" />
 
         <p className="text-gray-500 text-sm mt-7">
           By continuing, you agree to Flipkart's
           <span className="text-blue-700">Terms of Use</span> and
           <span className="text-blue-700"> Privacy Policy</span>.
         </p>
-        <button
-         
-          className="bg-[#fb641b] text-white w-11/12 mt-3 p-1.5 font-semibold"
-        >
+        <button className="bg-[#fb641b] text-white w-11/12 mt-3 p-1.5 font-semibold">
           Request OTP
         </button>
         <div id="recaptcha"></div>
@@ -44,16 +40,13 @@ const Signin = () => {
           />
         )}
         {otp && (
-          <button
-           
-            className="bg-[#fb641b] text-white w-11/12 mt-3 p-1.5 font-semibold"
-          >
+          <button className="bg-[#fb641b] text-white w-11/12 mt-3 p-1.5 font-semibold">
             Verify OTP
           </button>
         )}
 
         <p className="text-blue-500 text-center mt-64 font-semibold">
-          New to Flipkart? Create an account
+          <Link to="/register">New to Flipkart? Create an account</Link>
         </p>
       </div>
     </div>
