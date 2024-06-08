@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Register = (props) => {
     const inputRef = useRef()
+    const navigate = useNavigate()
     const [userDetails, setUserDetails ] = useState({
         name:'',
         email:'',
@@ -23,21 +25,21 @@ const Register = (props) => {
         e.preventDefault()
         console.log(userDetails)
         setUserDetails('')
-        // axios.post('http://localhost:3000/register', userDetails)
-        // .then((response) => {
-        //     const result = response.data
-        //     if(result.hasOwnProperty("errors")){
-        //         alert(result.message)
-        //     } else {
-        //         alert("Registration successful")
-        //         console.log(userDetails);
-        //         props.history.push("/signin");
-        //     }
-        // })
-        // .catch((err) => {
-        //     console.log(err)
-        //     setUserDetails('')
-        // })
+        axios.post('http://localhost:3876/register', userDetails)
+        .then((response) => {
+            const result = response.data
+            if(result.hasOwnProperty("errors")){
+                alert(result.message)
+            } else {
+                alert("Registration successful")
+                console.log(userDetails);
+                navigate('/signin')
+            }
+        })
+        .catch((err) => {
+            console.log(err)
+            setUserDetails({name: " ",email: " ", password: " "})
+        })
         
     }
 

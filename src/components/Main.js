@@ -5,40 +5,46 @@ import Menubar from "./Menubar";
 import Welcome from "./Welcome";
 import Footer from "./Footer";
 
-const Main = () => {
-    const [filteredData, setFilteredData] = useState([])
-      const [products, setProducts] = useState([]);
+const Main = ({ handleAuth, userLoggedIn }) => {
+  const [filteredData, setFilteredData] = useState([]);
+  const [products, setProducts] = useState([]);
 
-      useEffect(() => {
-        fetchData();
-      }, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-      const fetchData = async () => {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        setProducts(data)
-        setFilteredData(data)
-      };
+  const fetchData = async () => {
+    const response = await fetch("https://fakestoreapi.com/products");
+    const data = await response.json();
+    setProducts(data);
+    setFilteredData(data);
+  };
 
+  const handleSearch = (searchWord) => {
+    const result = products.filter((item) =>
+      item.title.trim().toLowerCase().includes(searchWord.toLowerCase())
+    );
+    setFilteredData(result);
+  };
 
-    const handleSearch = (searchWord) => {
-        const result = products.filter((item) => item.title.trim().toLowerCase().includes(searchWord.toLowerCase()))
-        setFilteredData(result)
-    }
-
-    const handleFilter = (criteria) => {
-        const result = products.filter((item) => item.category.toLowerCase().includes(criteria.toLowerCase()))
-        setFilteredData(result)
-    }
+  const handleFilter = (criteria) => {
+    const result = products.filter((item) =>
+      item.category.toLowerCase().includes(criteria.toLowerCase())
+    );
+    setFilteredData(result);
+  };
 
   return (
     <div className="">
-
-    <Navbar handleSearch={handleSearch} />
-    <Menubar handleFilter={handleFilter} />
-    <Welcome />
-    <Home products={products} filteredData={filteredData}/>
-    <Footer />
+      <Navbar
+        handleSearch={handleSearch}
+        handleAuth={handleAuth}
+        userLoggedIn={userLoggedIn}
+      />
+      <Menubar handleFilter={handleFilter} />
+      <Welcome />
+      <Home products={products} filteredData={filteredData} />
+      <Footer />
     </div>
   );
 };

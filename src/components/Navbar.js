@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 
-const Navbar = ({ handleSearch }) => {
+const Navbar = ({ handleSearch, handleAuth, userLoggedIn }) => {
+
   return (
     <div className="grid grid-cols-2 p-3">
       <div className="flex ml-20">
         <div>
-          <h1 className="text-blue-600 text-lg font-bold italic">Flipkart</h1>
+          <h1 className="text-blue-600 text-lg font-bold italic">Shopkart</h1>
           <h4 className="text-gray-500 text-sm italic">Explore</h4>
         </div>
 
@@ -24,12 +25,30 @@ const Navbar = ({ handleSearch }) => {
           🛍
           <h1>Become a seller</h1>
         </div>
-        <Link to="/signin">
+        {userLoggedIn ? (
           <div className="flex ml-6">
             🧑
-            <h1>Sign in</h1>
+            <h1>
+              <Link
+                to="/"
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  alert("Successfully logged out");
+                  handleAuth();
+                }}
+              >
+                Sign out
+              </Link>
+            </h1>
           </div>
-        </Link>
+        ) : (
+          <Link to="/signin">
+            <div className="flex ml-6">
+              🧑
+              <h1>Sign in</h1>
+            </div>
+          </Link>
+        )}
         <div className="flex ml-6">
           🛒
           <h1>Cart</h1>
@@ -39,7 +58,7 @@ const Navbar = ({ handleSearch }) => {
           className="flex ml-6"
         >
           📤
-          <h1>Log out</h1>
+          <h1>User</h1>
         </div>
       </div>
     </div>
