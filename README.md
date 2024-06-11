@@ -18,4 +18,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 🌐 ReactJS 
 🔧 Git | Markdown
 
-## The backend part for ecommerce website is https://github.com/98deeksha/ecommerce-backend  
+The backend part for ecommerce website is https://github.com/98deeksha/ecommerce-backend  
