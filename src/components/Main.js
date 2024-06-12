@@ -21,7 +21,7 @@ const Main = ({ handleAuth, userLoggedIn }) => {
   };
 
   const handleSearch = (searchWord) => {
-    const result = products.filter((item) =>
+      const result = products.filter((item) =>
       item.title.trim().toLowerCase().includes(searchWord.toLowerCase())
     );
     setFilteredData(result);
@@ -31,7 +31,7 @@ const Main = ({ handleAuth, userLoggedIn }) => {
     const result = products.filter((item) =>
       item.category.toLowerCase().includes(criteria.toLowerCase())
     );
-    setFilteredData(result);
+    setFilteredData(result)
   };
 
   return (

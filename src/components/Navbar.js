@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 const Navbar = ({ handleSearch, handleAuth, userLoggedIn }) => {
 
   return (
-    <div className="grid grid-cols-2 p-3">
-      <div className="flex ml-20">
+    <div className="grid sm:grid-cols-2 p-3 ">
+      <div className="flex lg:ml-20 sm:ml-3">
         <div>
           <h1 className="text-blue-600 text-lg font-bold italic">Shopkart</h1>
           <h4 className="text-gray-500 text-sm italic">Explore</h4>
         </div>
 
-        <div className="bg-blue-50 flex items center p-2 w-full ml-7">
+        <div className="bg-blue-50 flex items center p-2 w-full ml-7 h-10 rounded">
           🔍
           <input
             type="text"

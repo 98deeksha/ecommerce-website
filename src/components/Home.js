@@ -10,31 +10,41 @@ const Home = ({products, filteredData}) => {
 
  
   return (
-   <div className="bg-gray-300 grid md:grid-cols-3 xs:grid-cols-2 ">
-   {filteredData.length > 0 ? filteredData.map((item) => {
-    return (
-      <div
-        key={item.id}
-        onClick={() => handleProductClick(item)}
-        className="mx-auto mt-6 w-80 transform overflow-hidden rounded-lg bg-white dark:bg-gray-50 shadow-md duration-300 hover:scale-105 hover:shadow-lg"
-      >
-        <img src={item.image} alt={item.title} className="cursor-pointer" />
-        <div className="p-4">
-          <h2 className="mb-2 text-lg font-medium dark:text-black text-gray-900">
-            {item.title}
-          </h2>
-          <p className="mr-2 text-lg font-semibold text-gray-900 dark:text-black">
-            {item?.description.substring(0, item?.description.indexOf(" ")) +
-              "..."}
-          </p>
-          <p className="mb-2 text-base dark:text-black text-gray-700">
-            $ {item.price}
-          </p>
-        </div>
-      </div>
-    );
-   }) : products}
-   </div>
+    <div className="bg-gray-300 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+      {filteredData.length > 0 ? (
+        filteredData.map((item) => {
+          return (
+            <div
+              key={item.id}
+              onClick={() => handleProductClick(item)}
+              className="mx-auto mt-6 w-64 transform overflow-hidden rounded-lg bg-white dark:bg-gray-50 shadow-md duration-300 hover:scale-105 hover:shadow-lg flex flex-col items-center"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="cursor-pointer w-36 h-32 mt-3"
+              />
+              <div className="p-4">
+                <h2 className="mb-2 text-lg font-medium dark:text-black text-gray-900">
+                  {item.title}
+                </h2>
+                <p className="mr-2 text-lg font-semibold text-gray-900 dark:text-black">
+                  {item?.description.substring(
+                    0,
+                    item?.description.indexOf(" ")
+                  ) + "..."}
+                </p>
+                <p className="mb-2 text-base dark:text-black text-gray-700">
+                  $ {item.price}
+                </p>
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <p>No products found</p>
+      )}
+    </div>
   );
 };
 
